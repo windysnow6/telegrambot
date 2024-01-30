@@ -1,0 +1,30 @@
+import wikipedia
+from aiogram import Dispatcher, Bot, types, executor
+
+api = '6563710663:AAGPjkOWNtoJy2Hf3CO1MdQYyd1a7ojtG8I'
+wikipedia.set_lang('uz')
+bot = Bot(token=api)
+dp = Dispatcher(bot)
+
+@dp.message_handler(commands=['start'])
+async def start(xabar: types.Message):
+    await xabar.answer(f"Salom {xabar.from_user.first_name}")
+
+#@dp.message_handler()
+#async def echo(msg: types.Message):
+#    await msg.reply(msg.text)
+
+@dp.message_handler(commands=['help'])
+async def help(msg: types.Message):
+    await msg.reply(f"administratorga murojaat qiling \n@swordsteen")
+
+@dp.message_handler()
+async def wiki(msg: types.Message):
+    try:
+        response = wikipedia.summary(msg.text)
+        await msg.reply(response)
+    except:
+        await msg.reply("Bunday ma'lumot yo'q")
+
+if __name__ == "__main__":
+    executor.start_polling(dp, skip_updates=True)
