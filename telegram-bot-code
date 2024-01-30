@@ -1,7 +1,7 @@
 import wikipedia
 from aiogram import Dispatcher, Bot, types, executor
 
-api = '6563710663:AAGPjkOWNtoJy2Hf3CO1MdQYyd1a7ojtG8I'
+api = 
 wikipedia.set_lang('uz')
 bot = Bot(token=api)
 dp = Dispatcher(bot)
